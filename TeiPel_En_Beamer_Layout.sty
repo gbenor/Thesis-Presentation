@@ -18,8 +18,8 @@
 \usepackage{xstring}
 \usepackage{calculator}
 
-\edef\teilogoeps{teikal_logo.eps}
-\edef\teilogopng{teikal_logo.png}
+\edef\teilogoeps{bgu.png}
+\edef\teilogopng{bgu.png}
 
 \newcommand{\setTeipelLayout}[1]{
 	% choose Beamer theme
@@ -58,13 +58,13 @@
     \IfSubStr{#1}{newlogo}%
     	{%
         	\definecolor{teipel_red}{RGB}{85, 85, 57}
-            \edef\teilogoeps{teipel_new_logo.eps}
-			\edef\teilogopng{teipel_new_logo.eps}
+            \edef\teilogoeps{bgu.png}
+			\edef\teilogopng{bgu.png}
         }%
         {%
         	\definecolor{teipel_red}{RGB}{190,65,65}
-			\edef\teilogoeps{teikal_logo.eps}
-			\edef\teilogopng{teikal_logo.png}            
+			\edef\teilogoeps{bgu.png}
+			\edef\teilogopng{bgu.png}            
         }        
 	% set colors
 		
@@ -127,8 +127,9 @@
 \newcommand{\supervisor}[3]{
 	\subtitle{\textsc{Thesis}}
 	\logo{\begin{tabular}{c} \includegraphics[height=0.7cm,keepaspectratio]{\teilogopng} \\ \color{teipel_red}\scalebox{1.7}{\insertframenumber/\inserttotalframenumber} \end{tabular}}
-	\institute{\textsc{University}\\{School} \\ Department\\[5pt]{\includegraphics[height=1.5cm,keepaspectratio]{\teilogoeps}}\\[5pt] \scalebox{0.9}{#1: #2, #3}}
+	\institute{\textsc{Ben-Gurion University of the Negev}\\{Faculty of Engineering Sciences} \\ Department of Software and Information Systems Engineering\\[5pt]{\includegraphics[height=1.5cm,keepaspectratio]{\teilogoeps}}\\[5pt] \scalebox{0.9}{#1: #2, #3}}
 }
+
 
 \newcommand{\presentationDate}[1]{
 	\date{\tiny{#1}}

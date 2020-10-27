@@ -21,7 +21,13 @@
 %\usepackage{babel}
 %\usepackage[utf8]{inputenc}
 \usepackage[longnamesfirst,square,numbers,comma,sort&compress]{natbib}
-
+\usepackage{graphicx}
+\usepackage{todonotes}
+\usepackage[flushleft]{threeparttable}
+% \usepackage{multirow}
+% \usepackage{nameref}
+% \usepackage{amsmath}
+% \usepackage{titlesec}
 
 %%% FONT SELECTION %%%%%%%%%%%%%%%%%
 %%% we choose a sans font %%%%%%%%%%
@@ -41,13 +47,13 @@
 %%
 % load TEI-Pel - specific layout
 \usepackage{TeiPel_En_Beamer_Layout}
-\setTeipelLayout{draft,newlogo}% options: "draft", "newlogo"
+\setTeipelLayout{newlogo}% options: "draft", "newlogo"
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Thesis Info %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	% title
-		\title[This is my Title]{Comprehensive machine-learning-based analysis of microRNA-target interactions reveals variable transferability of interaction rules across species}	
+		\title[Thesis]{Comprehensive machine-learning-based analysis of microRNA-target interactions reveals variable transferability of interaction rules across species}	
 	% author 
     % (In the mandatory argument "{}", separate multiple
     % authors with "\and" - use "\\" for better author name formatting
@@ -59,7 +65,7 @@
 	% supervisor	
 		\supervisor{Supervisor}{Isana Veksler-Lublinsky}{PhD}
 	% date
-		\presentationDate{October 22, 2017}
+		\presentationDate{October 28, 2020}
 %%%%%%%%%%%%%%%%
 
 \begin{document}
@@ -80,8 +86,16 @@
 \item MicroRNAs (miRNAs) are small non-coding RNAs that regulate gene expression post-transcriptionally. 
 \item Mature miRNAs form the core of the miRNA-induced silencing complex with Argonaute proteins (miRISC).
 \item miRISC uses the sequence information in the miRNA as a guide to recognize and bind with target mRNAs.
-
 \end{itemize}
+
+\begin{figure}[ht!]
+	  \centering
+	      	\caption{\textbf{miRNA processing pathway}}
+	      		  \label{fig:miRNAprocessingpathway}
+
+    \includegraphics[width=0.5\textwidth]{images/ThelinearcanonicalpathwayofmicroRNAprocessing.jpg} 
+\end{figure}
+
 \end{frame}
 
 \begin{frame}{MicroRNA}
@@ -90,6 +104,14 @@
 \item miRNAs are conserved throughout evolution and are present in the genomes of animals and plants.  
 \item miRNAs have diverse functions in development and physiology and have been implicated in many human diseases.
 \end{itemize}
+
+\begin{figure}[ht!]
+	  \centering
+	      
+    \includegraphics[width=0.5\textwidth]{images/micro_rna2910516058.jpg} 
+\end{figure}
+
+
 \end{frame}
 
 \subsection{miRNA target sites}
@@ -371,32 +393,287 @@ No. of interactions in 3'UTRs                                                   
 \end{table}
 \end{frame}
 
-\section{Datasets' characteristics}
+\subsection{Datasets' characteristics}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}{Summary of the data processing pipeline}
-
+\begin{frame}{miRNA sequence appearances}
 \begin{figure}[h!]
   \caption{\textbf{Cumulative sum of miRNA sequence appearances in the examined datasets}}
-      \includegraphics[width=\textwidth]{images/1_mirna_dist.pdf}
+      \includegraphics[width=0.6\textwidth]{images/1_mirna_dist.pdf}
       \label{fig:datasetplot}
-      \caption*{Each curve corresponds to the cumulative sum of one of the datasets, where the bold points indicate the minimum number of unique miRNA sequences needed to represent 90\% of the interactions within a dataset. The height of a curve represents the size of the dataset, and the width of a curve represents the number of unique miRNA sequences that comprise the dataset.}
+ 
       \end{figure}
 \end{frame}
 
-\begin{frame}{Summary of the data processing pipeline}
-
+\begin{frame}{Classification of the miRNA-target duplexes}
 \begin{figure}[h!]
   \caption{\textbf{Classification of the miRNA-target duplexes based on their base-pairing patterns}} 
     \includegraphics[width = 1\textwidth]{images/2_seed_type_positive2.pdf}
       \label{fig:seed_type_pos}
-      \caption*{Distribution of miRNA-target duplexes across 6 classes according to the seed type (canonical and non-canonical) and to the base-pairing density (low: less than 11bp, medium: 11-16bp and high: more than 16bp).}
-
+     
       \end{figure}
 \end{frame}
       
 
+\subsection{Intra-dataset analysis}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Method}
+\begin{itemize}
+\item Feature extraction
+\item Training/ testing split
+\item Evaluation of different machine learning methods
+\item In-depth analysis of the XGBoost performance
+\item Top important features of each dataset
+\end{itemize}
+\end{frame}
 
+\begin{frame}{Features}
+
+\begin{table}[h!]
+\label{tbl:feature_category}
+ \resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|c|ll}
+\hline
+\textbf{Category}  & \multicolumn{1}{l|}{\textbf{No. of features}} & \multicolumn{1}{l|}{\textbf{Description}}                                                                                               & \multicolumn{1}{l|}{\textbf{Group}}              \\ \hline
+Seed features      & 13                                        & \multicolumn{1}{l|}{Seed composition and properties}                                                                                    & \multicolumn{1}{l|}{High-level} \\ \hline
+Free Energy        & 7                                         & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Free energy of the duplex and the mRNA \\ at different regions\end{tabular}}                                                                    & \multicolumn{1}{l|}{High-level} \\ \hline
+mRNA Composition   & 62                                        & \multicolumn{1}{l|}{mRNA composition in the site and flanking regions}                                                                           & \multicolumn{1}{l|}{High-level} \\ \hline
+miRNA Pairing      & 38                                        & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Binding information at each miRNA position \\ and across the miRNA-target duplex\end{tabular}} & \multicolumn{1}{l|}{Low-level}  \\ \hline
+Site accessibility & 370                                       & \multicolumn{1}{l|}{Unpaired probabilities of each base}                                                                                                 & \multicolumn{1}{l|}{Low-level}  \\ \hline
+Total              & 490                                       &                                                                                                                                         &                                                  \\ \cline{1-2}
+\end{tabular}}
+\end{table}
+\end{frame}
+
+\begin{frame}{Training/ testing split}
+\begin{itemize}
+\item Split ratio: 80\% training, 20\% testing
+\item 20 sets of stratify splits
+\begin{itemize}
+\item Ensure that each miRNA appears in the training and the testing sets at the same proportion as in the original dataset.
+\end{itemize}
+\item 5 control sets (random split)
+\end{itemize}
+\includegraphics[width=0.5\textwidth,keepaspectratio]{images/stratify.png}
+\end{frame}
+
+\begin{frame}{Evaluation of different machine learning methods}
+\begin{table}[h!]
+\label{tab:self_summary}
+   \resizebox{0.8\textwidth}{!}{%
+\begin{tabular}{|l|l|l|l|l|l|l|}
+\hline
+Dataset & XGBoost & RF & KNN & SGD & SVM & LR \\ \hline
+ca1                               & \begin{tabular}[c]{@{}l@{}}0.937 \\ (0.002)\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.885 \\ (0.004)\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.828 \\ (0.003)\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.797 \\ (0.033)\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.895 \\ (0.003)\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.836 \\ (0.004)\end{tabular} \\ \hline
+ce1                               & \begin{tabular}[c]{@{}l@{}}0.889 \\ (0.014)\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.833 \\ (0.019)\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.768 \\ (0.019)\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.798 \\ (0.045)\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.841 \\ (0.015)\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.843 \\ (0.014)\end{tabular} \\ \hline
+ce2                               & \begin{tabular}[c]{@{}l@{}}0.891 \\ (0.016)\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.858 \\ (0.018)\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.768 \\ (0.019)\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.819 \\ (0.034)\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.862 \\ (0.012)\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.847 \\ (0.016)\end{tabular} \\ \hline
+h1                                & \begin{tabular}[c]{@{}l@{}}0.824 \\ (0.007)\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.769 \\ (0.008)\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.731 \\ (0.007)\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.746 \\ (0.011)\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.795 \\ (0.007)\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.770 \\ (0.007)\end{tabular} \\ \hline
+h2                                & \begin{tabular}[c]{@{}l@{}}0.904 \\ (0.007)\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.869 \\ (0.011)\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.857 \\ (0.009)\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.860 \\ (0.03)\end{tabular}  & \begin{tabular}[c]{@{}l@{}}0.879 \\ (0.009)\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.892 \\ (0.009)\end{tabular} \\ \hline
+h3                                & \begin{tabular}[c]{@{}l@{}}0.835 \\ (0.007)\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.769 \\ (0.009)\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.744 \\ (0.009)\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.752 \\ (0.034)\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.805 \\ (0.007)\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.795 \\ (0.010)\end{tabular} \\ \hline
+m1                                & \begin{tabular}[c]{@{}l@{}}0.847 \\ (0.015)\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.795\\ (0.016)\end{tabular}  & \begin{tabular}[c]{@{}l@{}}0.758 \\ (0.022)\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.760 \\ (0.038)\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.819 \\ (0.019)\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.800 \\ (0.019)\end{tabular} \\ \hline
+m2                                & \begin{tabular}[c]{@{}l@{}}0.900 \\ (0.004)\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.826 \\ (0.004)\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.797 \\ (0.004)\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.798 \\ (0.017)\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.873\\ (0.004)\end{tabular}  & \begin{tabular}[c]{@{}l@{}}0.833 \\ (0.004)\end{tabular} \\ \hline
+\end{tabular}}
+\end{table}
+\end{frame}
+
+
+
+\begin{frame}{Top important features of each dataset}
+   \begin{figure}[h!]
+    \centering
+      \includegraphics[width=\textwidth]{images/3_feature_importance.pdf}
+      
+    %   \caption*{The features are sorted in descending order from the top feature (highest gain) to lowest. (a) A full view of the gain plot emphasizes the gain decay.  (b) A zoomed view, focused on the top 20 features.}%
+    
+\end{figure}
+\end{frame}
+
+
+
+\begin{frame}{Top important features of each dataset}
+\begin{table}[h!]
+\caption{Feature importance}
+\label{tab:feature_importance}
+ \begin{threeparttable}
+                     \resizebox{\textwidth}{!}{%
+
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
+\hline
+\textbf{Feature/Dataset}                          & \textbf{ca1} & \textbf{ce1} & \textbf{ce2} & \textbf{h1} & \textbf{h2} & \textbf{h3} & \textbf{m1} & \textbf{m2} & \textbf{mean} \\ \hline
+\textbf{Number of GU bp within the seed\tnote{n}}              & 100\tnote{*}          & 87\tnote{*}           & 95\tnote{*}           & 29\tnote{*}          & 40\tnote{*}          & 100\tnote{*}         & 28          & 100\tnote{*}         & 72            \\ \hline
+\textbf{bp in the 1st nt of the seed\tnote{b}}                    & 63\tnote{*}           & 79\tnote{*}           & 34\tnote{*}           & 70\tnote{*}          & 25\tnote{*}          & 30\tnote{*}          & 27          & 85\tnote{*}          & 52            \\ \hline
+Number of GU bp within the site\tnote{n}                      & 42\tnote{*}           & 71\tnote{*}           & 32\tnote{*}           & 100\tnote{*}         & 19          & 53\tnote{*}          & 35\tnote{*}          & 28\tnote{*}          & 48            \\ \hline
+Proportion of G in mRNA at the site region\tnote{n}                             & 12           & 74\tnote{*}           & 12           & 12          & 36\tnote{*}          & 33\tnote{*}          & 100\tnote{*}         & 37\tnote{*}          & 39            \\ \hline
+Duplex minimum free energy\tnote{n}                               & 13\tnote{*}           & 45           & 11           & 10          & 100\tnote{*}         & 19          & 35\tnote{*}          & 52\tnote{*}          & 36            \\ \hline
+\textbf{Number of bp at location 2-7\tnote{n}} & 42\tnote{*}           & 33           & 100\tnote{*}          & 12          & 18          & 36\tnote{*}          & 13          & 18          & 34            \\ \hline
+Proportion of GG in mRNA at the site region\tnote{n}                            & 30\tnote{*}           & 21           & 10           & 12          & 7           & 30\tnote{*}          & 79\tnote{*}          & 26\tnote{*}          & 27            \\ \hline
+\textbf{bp in the 4th nt of the seed\tnote{b}}                    & 8            & 100\tnote{*}          & 21           & 10          & 11          & 16          & 2           & 12          & 22            \\ \hline
+Number of bulges outside the seed\tnote{n}                 & 3            & 60\tnote{*}           & 6            & 25\tnote{*}          & 32\tnote{*}          & 9           & 9           & 8           & 19            \\ \hline
+\textbf{bp in the 2nd nt of the seed\tnote{b}}                    & 8            & 42           & 37\tnote{*}           & 7           & 11          & 13          & 15          & 6           & 17            \\ \hline
+\textbf{bp in the 5th nt of the seed\tnote{b}}                    & 12           & 27           & 14           & 14          & 6           & 15          & 29\tnote{*}          & 12          & 16            \\ \hline
+\textbf{Number of GC bp within the seed\tnote{n}}              & 7            & 22           & 24\tnote{*}           & 18\tnote{*}          & 12          & 13          & 11          & 12          & 15            \\ \hline
+Number of GC bp outside the seed\tnote{n}                         & 4            & 27           & 11           & 10          & 27\tnote{*}          & 8           & 6           & 5           & 12            \\ \hline
+Accessibility (nt=21, len=10)\tnote{n}                                    & 9            & 19           & 7            & 6           & 25          & 7           & 12          & 7           & 11            \\ \hline
+minimum free energy of the target site + 50nt flanking regions\tnote{n}            & 8            & 11           & 6            & 7           & 8           & 11          & 36\tnote{*}          & 6           & 11            \\ \hline
+\textbf{Number of mismatches inside the seed\tnote{n}}    & 4            & 3            & 15           & 19\tnote{*}          & 0           & 13          & 2           & 9           & 8             \\ \hline
+\end{tabular}}
+
+ \end{threeparttable}
+
+\end{table}
+\end{frame}
+
+\subsection{Cross-dataset analysis}
+\begin{frame}{Method}
+Examined the relationships between datasets:
+\begin{itemize}
+\item Use a statistical measure to calculate the distance between the datasets. 
+\item Visualized the datasets based on the unified list of the 16 most important features.
+\item Evaluate the performance of each dataset specific classifier to properly classify interactions in the other datasets.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Kullback Leibler divergence}
+\begin{equation}
+ D_{KL} \left (P ||Q \right ) = \sum_{x\in \chi }{P\left ( x \right )log\left ( \frac{P\left ( x \right )}{Q\left ( x \right )} \right )}\label{eq:1}
+\end{equation}
+\begin{itemize}
+\item Can be interpreted as the amount of information lost when the training set represents the testing set.
+\item  \textit{P(x)} and \textit{Q(x)} are the miRNA seed distribution functions. 
+\item \textit{Q(x)} is the approximation distribution (calculated from the training set) 
+\item \textit{P(x)} is the true distribution (calculated from the testing set). 
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Kullback Leibler divergence}
+
+\begin{figure}[h!]
+      \includegraphics[width = 0.7\textwidth]{images/4_divergence_reverse.pdf}
+      \label{fig:divergence}
+      
+      \end{figure}
+\end{frame}
+
+\begin{frame}{Dataset visualization using PCA}
+\begin{figure}[h!]
+  \caption{\textbf{Visualization of the datasets in 2D}} 
+       \includegraphics[width = 0.8\textwidth]{images/5_unite_features_pca_resample_scale=True_all.png}
+      \label{fig:feature_pca}
+      
+      \end{figure}
+\end{frame}
+
+\begin{frame}{Classification performance between datasets}
+
+\begin{figure}[h!]
+      \includegraphics[width = 0.7\textwidth]{images/6_diff_summary.pdf}
+    \label{fig:crossdataset}
+    
+      \end{figure}
+
+\end{frame}
+
+\section{Discussion}
+\subsection{Methodology}
+\begin{frame}{Methodology}
+\begin{itemize}
+\item Development of pipeline infrastructure enable us to analyze all available datasets.
+\item The importance of thorough analysis of the datasets
+\item Using tree-based classifier
+\item Training and testing dataset split: stratify and control sets
+\end{itemize}
+\end{frame}
+
+\subsection{Results}
+% \begin{frame}{Evolutionary distance}
+% \begin{table}[h!]
+% \caption{Estimated divergence time {[}MYA{]} between organisms in our study}
+% \label{tab:evolutiontime}
+% \begin{tabular}{|l|l|l|l|}
+% \hline
+%              & Mouse & Cattle & C.elegans \\ \hline
+% Human & 90  & 96         & 797                    \\ \hline
+% Mouse          &     & 96         & 797                    \\ \hline
+% Cattle   &     &            & 797                    \\ \hline
+% \end{tabular}
+% \caption*{Each cell represents the time since the pair of organisms from the corresponding row and column diverged from their common ancestor (source: \cite{kumar2017timetree})}
+% \end{table}
+% \end{frame}
+
+
+\begin{frame}{Classification performance between organisms}
+\begin{itemize}
+\item The accuracy results of cross-dataset classification ranged between 0.56 to 0.94. 
+\item We examine several factors:
+\begin{enumerate}
+\item Evolutionary distance
+\begin{table}[h!]
+\label{tab:evolutiontime}
+                     \resizebox{0.5\textwidth}{!}{%
+\begin{tabular}{|l|l|l|l|}
+\hline
+             & Mouse & Cattle & C.elegans \\ \hline
+Human & 90  & 96         & 797                    \\ \hline
+Mouse          &     & 96         & 797                    \\ \hline
+Cattle   &     &            & 797                    \\ \hline
+\end{tabular}}
+\end{table}
+\item KL divergence - The divergence associates with the differences in miRNA distributions among different organisms, cell types or developmental stages.
+\item Area covered in 2D feature space - How the datasets spans the feature space.
+\end{enumerate}
+
+ 
+\end{itemize}
+\end{frame}
+
+
+\subsection{Conclusions and future perspectives}
+\begin{frame}{Conclusions}
+\begin{itemize}
+\item The accuracy are pretty high, as long as the organisms are within a certain evolutionary distance.
+\item Ability of the machine learning model to generalize interaction rules into more universal interaction rules. 
+\item Target prediction models could be applied also to organisms where experimental training data is limited or unavailable.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Future work}
+\begin{itemize}
+\item Add more miRNA-mRNA interaction datasets when become available.
+\item Database and web server with parsed data, feature extraction and negative data.
+\item Combine the information from several datasets in an iterative manner and examine the prediction accuracy in close and more distant organisms.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{MirTarFeaturesDB}
+
+
+\begin{figure}[h!]
+  \caption{\textbf{search interaction window}}
+      \includegraphics[width = 1\textwidth]{db figures/search interaction window.jpg}
+      \label{fig:search}
+          \end{figure}
+\end{frame}
+\begin{frame}{MirTarFeaturesDB}
+
+
+\begin{figure}[h!]
+  \caption{\textbf{Result window}}
+      \includegraphics[width = 1\textwidth]{db figures/result.jpg}
+      \label{fig:dbresult}
+          \end{figure}
+\end{frame}
+\begin{frame}{MirTarFeaturesDB}
+
+
+
+\begin{figure}[h!]
+  \caption{\textbf{Download interaction file}}
+      \includegraphics[width = 1\textwidth]{db figures/download.png}
+      \label{fig:download}
+          \end{figure}
+\end{frame}
 
 
 % \begin{frame}{Slide Title \#4}
@@ -523,21 +800,23 @@ No. of interactions in 3'UTRs                                                   
 % 	\end{itemize}
 % \end{frame}
 
-\begin{frame}{References}
-	\begin{thebibliography}{2}
+% \begin{frame}{References}
+% 	\begin{thebibliography}{2}
+% \bibliographystyle{abbrv}  
+% \bibliography{thesis}
+% % 		\beamertemplatebookbibitems
+% % 		\bibitem{Author1990}A.\ Author. \newblock\emph{Handbook of Everything}.\newblock
+% % \textlatin{Some Press, \oldstylenums{1990}}.
+
+% % 		\beamertemplatearticlebibitems
+% % 		\bibitem{Someone2002}B.\ Author.\newblock On this and that\emph{.}
+% % \newblock\emph{Journal on This and That}. 
+% % \oldstylenums{2}(\oldstylenums{1}):\oldstylenums{50}--\oldstylenums{100}, 
+% % \oldstylenums{2000}.
+% 	\end{thebibliography}
+% \end{frame}
+\section{Bibliography}
 \bibliographystyle{abbrv}  
 \bibliography{thesis}
-% 		\beamertemplatebookbibitems
-% 		\bibitem{Author1990}A.\ Author. \newblock\emph{Handbook of Everything}.\newblock
-% \textlatin{Some Press, \oldstylenums{1990}}.
-
-% 		\beamertemplatearticlebibitems
-% 		\bibitem{Someone2002}B.\ Author.\newblock On this and that\emph{.}
-% \newblock\emph{Journal on This and That}. 
-% \oldstylenums{2}(\oldstylenums{1}):\oldstylenums{50}--\oldstylenums{100}, 
-% \oldstylenums{2000}.
-	\end{thebibliography}
-\end{frame}
-
 %%
 \end{document}
