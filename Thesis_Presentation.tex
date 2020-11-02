@@ -27,7 +27,7 @@
 % \usepackage{multirow}
 % \usepackage{nameref}
 % \usepackage{amsmath}
-% \usepackage{titlesec}
+\usepackage{wrapfig}
 
 %%% FONT SELECTION %%%%%%%%%%%%%%%%%
 %%% we choose a sans font %%%%%%%%%%
@@ -77,81 +77,173 @@
 % Your Slides Start here:
 
 %%%%
-\section{Motivaton}
+\section{Background}
 
 %%
 \subsection[Background]{MicroRNA background}
+
+\begin{frame}{The Central Dogma of Molecular Biology}
+	\begin{exampleblock}
+		<1->{}
+		\begin{itemize}
+			\item Published by Francis Crick in 1957-1958
+			\item "DNA makes RNA, and RNA makes protein"
+		\end{itemize}
+	\end{exampleblock}
+	\begin{figure}[ht!]
+		\centering
+		\includegraphics[width=0.8\textwidth]{images/dogma.png}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Regulation of Gene Expression}
+	\begin{exampleblock}
+		<1->{}
+		\begin{itemize}
+			\item Mechanisms that are used by cells to increase or decrease the production of specific gene products (protein or RNA)
+		\end{itemize}
+	\end{exampleblock}
+	\begin{figure}[ht!]
+		\centering
+		\includegraphics[width=0.8\textwidth]{images/modifieddogma.png}
+	\end{figure}
+\end{frame}
+
+
+
+\begin{frame}{MicroRNA}
+	\begin{exampleblock}
+		<1->{}
+		\begin{itemize}
+			\item A class of small non-coding RNAs (19-24 nts)\\
+			      \textbf{hsa-miR-1: UGGAAUGUAAAGAAGUAUGUAU
+			      	}\item Regulate gene expression by binding to partially complementary sites
+			      on target mRNAs (hybridization)
+		\end{itemize}
+	\end{exampleblock}
+	\begin{itemize}
+		% \item MicroRNAs (miRNAs) are small non-coding RNAs that regulate gene expression post-transcriptionally. 
+		% \item Mature miRNAs form the core of the miRNA-induced silencing complex with Argonaute proteins (miRISC).
+		% \item miRISC uses the sequence information in the miRNA as a guide to recognize and bind with target mRNAs.
+	\end{itemize}
+	\begin{figure}[ht!]
+		\centering
+			\includegraphics[width=0.8\textwidth]{images/mirna-target.png}
+		\end{figure}
+\end{frame}
+
+
 \begin{frame}{MicroRNA}
 	\begin{itemize}
-\item MicroRNAs (miRNAs) are small non-coding RNAs that regulate gene expression post-transcriptionally. 
-\item Mature miRNAs form the core of the miRNA-induced silencing complex with Argonaute proteins (miRISC).
-\item miRISC uses the sequence information in the miRNA as a guide to recognize and bind with target mRNAs.
+% \item miRISC binding typically leads to translational inhibition and/or degradation of targeted mRNAs.
+\item Lead to translational inhibition and/or degradation of targeted mRNAs
+\item Conserved throughout evolution
+\item Present in the genomes of animals and plants  
+\item Have diverse functions in development and physiology
+\item Have been implicated in many human diseases
 \end{itemize}
-
-\begin{figure}[ht!]
-	  \centering
-	      	\caption{\textbf{miRNA processing pathway}}
-	      		  \label{fig:miRNAprocessingpathway}
-
-    \includegraphics[width=0.5\textwidth]{images/ThelinearcanonicalpathwayofmicroRNAprocessing.jpg} 
-\end{figure}
+	\begin{exampleblock}
+		<1->{}
+		\begin{itemize}
+			\item Found in all mammalian cells
+			\item Unique to cell type
+			\item Unique to cell states
+		\end{itemize}
+	\end{exampleblock}
 
 \end{frame}
 
-\begin{frame}{MicroRNA}
-	\begin{itemize}
-\item miRISC binding typically leads to translational inhibition and/or degradation of targeted mRNAs.
-\item miRNAs are conserved throughout evolution and are present in the genomes of animals and plants.  
-\item miRNAs have diverse functions in development and physiology and have been implicated in many human diseases.
-\end{itemize}
-
-\begin{figure}[ht!]
-	  \centering
-	      
-    \includegraphics[width=0.5\textwidth]{images/micro_rna2910516058.jpg} 
-\end{figure}
-
-
-\end{frame}
-
-\subsection{miRNA target sites}
+\subsection{Identification of miRNA target sites}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Identification of miRNA target sites}
+\begin{exampleblock}
+		<1->{}
+		The identification of miRNA target sites on mRNAs is a fundamental step in understanding miRNA involvement in cellular processes.
+	\end{exampleblock}
 	\begin{itemize}
-	\item The identification of miRNA target sites on mRNAs is a fundamental step in understanding miRNA involvement in cellular processes.
-
-	\item Identifying target genes using laboratory experiments involves complex techniques.
+	\item Laboratory experiments
+	\item Bionformatics methods
 \end{itemize}
+\begin{figure}[ht!]
+	  \centering
+    \includegraphics[width=0.5\textwidth]{images/micro_rna2910516058.jpg} 
+\end{figure}
 \end{frame}
 
-\begin{frame}{Identification of miRNA target sites}
-	\begin{itemize}
-\item Measuring changes in mRNA levels following miRNA over-expression or inhibition in tissue-cultured cells.
+
+
+\begin{frame}{Experimental methods}
+\begin{column}{0.65\textwidth}
+\begin{exampleblock}
+		<1->{Measuring changes in mRNA levels}
+		 Measuring level changes in tissue-cultured cells.
     \begin{itemize}
     \item Cons: indirect signals, exact sequences are unknown, may miss signals.
     \end{itemize}
-		\pause
-
-\item Crosslinking and immunoprecipitation (CLIP) of RNA-protein complexes that are found in direct contact.
+	\end{exampleblock}
+\begin{exampleblock}
+		<1->{Crosslinking and immunoprecipitation (CLIP)}
+		CLIP of RNA-protein complexes that are found in direct contact.
   \begin{itemize}
     \item Cons: the identity of the specific miRNA has to be predicted bioinformatically.
     \end{itemize}
+	\end{exampleblock}
+\end{column}
+\begin{column}{0.35\textwidth}
+\begin{figure}[hb!]
+	  \centering
+% 	  \caption{Crosslinking and immunoprecipitation (CLIP)}
+    \includegraphics[width=0.8\textwidth]{images/Crosslinking-and-Immunoprecipitation-(CLIP)-2.jpg}
+\end{figure}
+\end{column}
 
-\end{itemize}
 \end{frame}
 
 
-\begin{frame}{Identification of miRNA target sites}
+\begin{frame}{Experimental methods}
+\begin{exampleblock}
+		<1->{Advanced methods}
+		  capture miRNAs bound to their respective targets
 	\begin{itemize}
-\item Recently, advanced methods have been developed to capture miRNAs bound to their respective targets.
-\begin{itemize}
-\item CLASH (Cross-linking, Ligation and Sequencing of Hybrids) \cite{helwak2013mapping}
-\item CLEAR (covalent ligation of endogenous Argonaute-bound RNAs)-CLIP \cite{darnell_moore2015mirna, scheel2017global}
-\item Modified iPAR-CLIP \cite{grosswendt2014unambiguous}
+\item CLASH (Cross-linking, Ligation and Sequencing of Hybrids)
+\item CLEAR (covalent ligation of endogenous Argonaute-bound RNAs)-CLIP 
+\item Modified iPAR-CLIP 
 \end{itemize}
-\item These methdos use an extra step to covalently ligate the 3' end of a miRNA and the 5' end of the associated target RNA within the miRISC. 
-\end{itemize}
+\end{exampleblock}
+These methdos use an extra step to covalently ligate the 3' end of a miRNA and the 5' end of the associated target RNA within the miRISC. 
 \end{frame}
+
+\begin{frame}{Experimental methods}
+\begin{figure}[hb!]
+	  \centering
+% 	  \caption{Crosslinking and immunoprecipitation (CLIP)}
+    \includegraphics[width=0.8\textwidth]{images/clash11.png}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}{Principles of Bioinformatics methods}
+\begin{itemize}
+\item Base pairing pattern (e.g., seed)
+\item Free energy of the miRNA-mRNA duplex
+\item Evolutionarily conservation of the target gene
+\item Accessibility of the mRNA (mRNA secondary structure)
+\end{itemize}
+\begin{figure}[hb!]
+	  \centering
+% 	  \caption{Crosslinking and immunoprecipitation (CLIP)}
+    \includegraphics[width=0.4\textwidth]{images/mirna seed second.jpg}
+\end{figure}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Motivaton}
+
+\subsection{Previous work}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 
 \begin{frame}{Avaliable datasets}
 % 	\begin{itemize}
@@ -184,56 +276,56 @@
     ca1 &
 	Madin-Darby bovine kidney (MDBK) &
 	CLEAR-CLIP                        
-	& \cite{scheel2017global} \\
+	& \includegraphics[height=0.15cm]{images/Bos_taurus_taurus_sideview.jpg} \\
 	\hline
 	
 % 	celegans\_L3 & 
     ce1 &
 	L3 staged & 
 	Modified iPAR-CLIP & 
-	\cite{grosswendt2014unambiguous}  \\
+	 \includegraphics[width=0.1\textwidth]{images/220px-CelegansGoldsteinLabUNC.jpg} \\
 	\hline
 
 % 	celegans\_L4 & 
     ce2 &
 	Mid-L4 WT (N2)  & 
 	ALG-1 iCLIP endogenous ligation & 
-	\cite{broughton2016pairing} \\
+	 \includegraphics[width=0.1\textwidth]{images/220px-CelegansGoldsteinLabUNC.jpg} \\
 	\hline
 
 % 	human\_HEK293 & 
     h1 &
 	\textbf{Human embryonic kidney293 cells (HEK293)} & 
 	CLASH  & 
-	\cite{helwak2013mapping} \\
+	 \includegraphics[width=0.05\textwidth]{images/human.png} \\
 	\hline
 	
 % 	human\_mix & 
     h2 &
 	A mix of 6 datasets & 
 	AGO-CLIP endogenous ligation &  
-	\cite{grosswendt2014unambiguous} \\
+	 \includegraphics[width=0.05\textwidth]{images/human.png} \\
 	\hline
 	
 % 	human\_huh7.5 & 
     h3 &
 	Human hepatoma cells (Huh-7.5) & 
 	CLEAR-CLIP & 
-	\cite{darnell_moore2015mirna} \\
+	 \includegraphics[width=0.05\textwidth]{images/human.png} \\
 	\hline
 	
 % 	mouse\_mix & 
     m1 &
 	A mix of 3 datasets & 
 	AGO-CLIP endogenous ligation & 
-	\cite{grosswendt2014unambiguous} \\
+	 \includegraphics[width=0.15\textwidth]{images/mosmus.jpg} \\
 	\hline
 	
 % 	mouse\_ATCC & 
     m2 &
 	N2A mouse neuroblastoma (ATCC) & 
 	CLEAR-CLIP & 
-	\cite{darnell_moore2015mirna} \\
+	 \includegraphics[width=0.15\textwidth]{images/mosmus.jpg} \\
 	\hline
 \end{tabular}}
 \end{table}
@@ -241,28 +333,7 @@
 
 \end{frame}
 
-\subsection{Research Questions}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}{Research Questions}
-	\begin{itemize}
-
-\item We would like to study the transferability of miRNA-target interaction rules between organisms
-\begin{enumerate}
-% \item What are the available datasets of chimeric miRNA-target interactions from a variety of organisms?
-\item What are the specifications of a standard format, to represent all the available datasets?
-\item What are the high-level and raw-level features that best represent interactions?
-\item What are the key features of miRNA-target interactions for each organism?
-\item What is the performance of machine learning models in predicting organism interactions different from the one they have trained on?
-\item What are the different factors that best explain the observed results, and do they coincide with the evolutionary distance?
-\end{enumerate}
-
-	\end{itemize}
-\end{frame}
-
-
-\subsection{Previous work}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}{Previous work}
 
@@ -332,6 +403,29 @@ mirTarget v4 \cite{liu2019prediction} & SVM                & \begin{tabular}[c]{
 \end{tabular}}
 \end{table}
 \end{frame}
+
+
+
+\subsection{Research Questions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Research Questions}
+	\begin{itemize}
+
+\item We would like to study the transferability of miRNA-target interaction rules between organisms
+\begin{enumerate}
+% \item What are the available datasets of chimeric miRNA-target interactions from a variety of organisms?
+\item What are the specifications of a standard format, to represent all the available datasets?
+\item What are the high-level and raw-level features that best represent interactions?
+\item What are the key features of miRNA-target interactions for each organism?
+\item What is the performance of machine learning models in predicting organism interactions different from the one they have trained on?
+\item What are the different factors that best explain the observed results, and do they coincide with the evolutionary distance?
+\end{enumerate}
+
+	\end{itemize}
+\end{frame}
+
+
 
 \section{Results}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
