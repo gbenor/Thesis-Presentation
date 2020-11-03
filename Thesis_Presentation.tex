@@ -121,11 +121,11 @@
 			      on target mRNAs (hybridization)
 		\end{itemize}
 	\end{exampleblock}
-	\begin{itemize}
-		% \item MicroRNAs (miRNAs) are small non-coding RNAs that regulate gene expression post-transcriptionally. 
-		% \item Mature miRNAs form the core of the miRNA-induced silencing complex with Argonaute proteins (miRISC).
-		% \item miRISC uses the sequence information in the miRNA as a guide to recognize and bind with target mRNAs.
-	\end{itemize}
+% 	\begin{itemize}
+% 		% \item MicroRNAs (miRNAs) are small non-coding RNAs that regulate gene expression post-transcriptionally. 
+% 		% \item Mature miRNAs form the core of the miRNA-induced silencing complex with Argonaute proteins (miRISC).
+% 		% \item miRISC uses the sequence information in the miRNA as a guide to recognize and bind with target mRNAs.
+% 	\end{itemize}
 	\begin{figure}[ht!]
 		\centering
 			\includegraphics[width=0.8\textwidth]{images/mirna-target.png}
@@ -173,30 +173,28 @@
 
 
 \begin{frame}{Experimental methods}
-\begin{column}{0.65\textwidth}
-\begin{exampleblock}
-		<1->{Measuring changes in mRNA levels}
-		 Measuring level changes in tissue-cultured cells.
-    \begin{itemize}
-    \item Cons: indirect signals, exact sequences are unknown, may miss signals.
-    \end{itemize}
-	\end{exampleblock}
-\begin{exampleblock}
-		<1->{Crosslinking and immunoprecipitation (CLIP)}
-		CLIP of RNA-protein complexes that are found in direct contact.
-  \begin{itemize}
-    \item Cons: the identity of the specific miRNA has to be predicted bioinformatically.
-    \end{itemize}
-	\end{exampleblock}
-\end{column}
-\begin{column}{0.35\textwidth}
-\begin{figure}[hb!]
-	  \centering
-% 	  \caption{Crosslinking and immunoprecipitation (CLIP)}
-    \includegraphics[width=0.8\textwidth]{images/Crosslinking-and-Immunoprecipitation-(CLIP)-2.jpg}
-\end{figure}
-\end{column}
-
+	\begin{column}{0.65\textwidth}
+		\begin{exampleblock}
+			<1->{Measuring changes in mRNA levels}
+			Measuring level changes in tissue-cultured cells.
+			\begin{itemize}
+				\item Cons: indirect signals, exact sequences are unknown, may miss signals.
+			\end{itemize}
+		\end{exampleblock}
+		\begin{exampleblock}
+			<1->{Crosslinking and immunoprecipitation (CLIP)}
+			CLIP of RNA-protein complexes that are found in direct contact.
+			\begin{itemize}
+				\item Cons: the identity of the specific miRNA has to be predicted bioinformatically.
+			\end{itemize}
+		\end{exampleblock}
+	\end{column}
+	\begin{column}{0.35\textwidth}
+		\begin{figure}[hb!]
+			\centering
+			\includegraphics[width=0.8\textwidth]{images/Crosslinking-and-Immunoprecipitation-(CLIP)-2.jpg}
+		\end{figure}
+	\end{column}
 \end{frame}
 
 
@@ -244,7 +242,6 @@ These methdos use an extra step to covalently ligate the 3' end of a miRNA and t
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-
 \begin{frame}{Avaliable datasets}
 % 	\begin{itemize}
 % 	\item Direct experiments
@@ -267,65 +264,62 @@ These methdos use an extra step to covalently ligate the 3' end of a miRNA and t
 \label{tbl:dataset_description}
 % \begin{tabular}{ | l | l | l | l | l | }
  \resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|p{5cm}|p{4cm}|l|}
+\begin{tabular}{|l|p{5cm}|p{4cm}|c|}
 	\hline
-	\textbf{Name} & \textbf{Cell/ Developmental stage} & \textbf{Experimental Method} & \textbf{Reference} \\
+	\textbf{Name} & \textbf{Cell/ Developmental stage} & \textbf{Experimental Method} & \textbf{Organism} \\
 	\hline
 	
 % 	cattle\_MDBK & 
     ca1 &
 	Madin-Darby bovine kidney (MDBK) &
-	CLEAR-CLIP                        
-	& \includegraphics[height=0.15cm]{images/Bos_taurus_taurus_sideview.jpg} \\
+	CLEAR-CLIP  &                      
+	\includegraphics[height=0.4cm]{images/Bos_taurus_taurus_sideview.jpg} \\
 	\hline
-	
 % 	celegans\_L3 & 
     ce1 &
 	L3 staged & 
 	Modified iPAR-CLIP & 
-	 \includegraphics[width=0.1\textwidth]{images/220px-CelegansGoldsteinLabUNC.jpg} \\
+	\includegraphics[height=0.4cm]{images/220px-CelegansGoldsteinLabUNC.jpg} \\
 	\hline
-
 % 	celegans\_L4 & 
     ce2 &
 	Mid-L4 WT (N2)  & 
 	ALG-1 iCLIP endogenous ligation & 
-	 \includegraphics[width=0.1\textwidth]{images/220px-CelegansGoldsteinLabUNC.jpg} \\
+	\includegraphics[height=0.4cm]{images/220px-CelegansGoldsteinLabUNC.jpg} \\
 	\hline
-
 % 	human\_HEK293 & 
-    h1 &
+    \textbf{h1} &
 	\textbf{Human embryonic kidney293 cells (HEK293)} & 
-	CLASH  & 
-	 \includegraphics[width=0.05\textwidth]{images/human.png} \\
+	\textbf{CLASH}  & 
+	\includegraphics[height=0.4cm]{images/human.png} \\
 	\hline
 	
 % 	human\_mix & 
     h2 &
 	A mix of 6 datasets & 
 	AGO-CLIP endogenous ligation &  
-	 \includegraphics[width=0.05\textwidth]{images/human.png} \\
+	\includegraphics[height=0.4cm]{images/human.png} \\
 	\hline
 	
 % 	human\_huh7.5 & 
     h3 &
 	Human hepatoma cells (Huh-7.5) & 
 	CLEAR-CLIP & 
-	 \includegraphics[width=0.05\textwidth]{images/human.png} \\
+	\includegraphics[height=0.4cm]{images/human.png} \\
 	\hline
 	
 % 	mouse\_mix & 
     m1 &
 	A mix of 3 datasets & 
 	AGO-CLIP endogenous ligation & 
-	 \includegraphics[width=0.15\textwidth]{images/mosmus.jpg} \\
+	 \includegraphics[height=0.4cm]{images/mosmus.jpg} \\
 	\hline
 	
 % 	mouse\_ATCC & 
     m2 &
 	N2A mouse neuroblastoma (ATCC) & 
 	CLEAR-CLIP & 
-	 \includegraphics[width=0.15\textwidth]{images/mosmus.jpg} \\
+	\includegraphics[height=0.4cm]{images/mosmus.jpg} \\
 	\hline
 \end{tabular}}
 \end{table}
@@ -336,14 +330,40 @@ These methdos use an extra step to covalently ligate the 3' end of a miRNA and t
 
 
 \begin{frame}{Previous work}
-
-Several ML-based methods utilized chimeric miRNA-target datasets to build and evaluate models. These methods differ in several aspects:
-\begin{enumerate}
+\begin{column}{0.65\textwidth}
+Target prediction algorithms can be grouped into three categories:
+\begin{itemize}
+\item ab initio 
+\item machine learning 
+\item hybrid approaches
+\end{itemize}
+\end{column}
+\begin{column}{0.35\textwidth}
+\begin{figure}[hb!]
+	  \centering
+% 	  \caption{Crosslinking and immunoprecipitation (CLIP)}
+    \includegraphics[width=\textwidth]{images/Word-cloud-for-relative-use-of-miRNA-target-prediction-tools-based-on-number-of.png}
+\end{figure}
+\end{column}
+\begin{exampleblock}
+		<1->{Machine learning algorithms}
+The methods differ in several aspects:	
+\begin{itemize}
 \item ML approach
 \item Features
 \item Datasets for training and testing
 \item Generation of negative data
-\end{enumerate}
+\end{itemize}
+\end{exampleblock}
+
+
+% Several ML-based methods utilized chimeric miRNA-target datasets to build and evaluate models. These methods differ in several aspects:
+% \begin{enumerate}
+% \item ML approach
+% \item Features
+% \item Datasets for training and testing
+% \item Generation of negative data
+% \end{enumerate}
 
 \end{frame}
 
@@ -375,12 +395,21 @@ mirTarget v4 \cite{liu2019prediction} & SVM                & \begin{tabular}[c]{
 
 \begin{frame}{DeepMirTar}
 \begin{itemize}
-\item DeepMirTar \cite{wen2018deepmirtar} is based on a stacked de-noising auto-encoder deep learning method (SdA).
+\item DeepMirTar is based on a stacked de-noising auto-encoder deep learning method (SdA).
 \item Uses 750 different features to describe the interactions.
-\item The features capture the information about the seed match, sequence composition, free energy, site accessibility, conservation, and hot-encoding of miRNAs and their target sites. 
 \end{itemize}
-\includegraphics[width=0.5\textwidth,keepaspectratio]{images/deepmirtarsda.png}
-
+\begin{column}{0.5\textwidth}
+\begin{exampleblock}
+		<1->{Features}
+seed match, sequence composition, free energy, site accessibility, conservation, and hot-encoding of miRNAs and their target sites
+\end{exampleblock}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{figure}[]
+	  \centering
+\includegraphics[width=0.8\textwidth,keepaspectratio]{images/deepmirtarsda.png}
+\end{figure}
+\end{column}
 \end{frame}
 
 \begin{frame}{Accuracy performance}
@@ -415,11 +444,15 @@ mirTarget v4 \cite{liu2019prediction} & SVM                & \begin{tabular}[c]{
 \item We would like to study the transferability of miRNA-target interaction rules between organisms
 \begin{enumerate}
 % \item What are the available datasets of chimeric miRNA-target interactions from a variety of organisms?
-\item What are the specifications of a standard format, to represent all the available datasets?
-\item What are the high-level and raw-level features that best represent interactions?
-\item What are the key features of miRNA-target interactions for each organism?
-\item What is the performance of machine learning models in predicting organism interactions different from the one they have trained on?
-\item What are the different factors that best explain the observed results, and do they coincide with the evolutionary distance?
+\item \textbf{Normalization} - What are the specifications of a standard format, to represent all the available datasets?
+\pause
+\item \textbf{Features} - What are the high-level and raw-level features that best represent interactions?
+\pause
+\item \textbf{Top important features} - What are the key features of miRNA-target interactions for each organism?
+\pause
+\item \textbf{Inter-organism  performance} - What is the performance of machine learning models in predicting organism interactions different from the one they have trained on?
+\pause
+\item \textbf{Model transferability} - What are the different factors that best explain the observed results, and do they coincide with the evolutionary distance?
 \end{enumerate}
 
 	\end{itemize}
@@ -427,33 +460,69 @@ mirTarget v4 \cite{liu2019prediction} & SVM                & \begin{tabular}[c]{
 
 
 
-\section{Results}
+% \begin{frame}{Research Questions}
+% % \textbf{We would like to study the transferability of miRNA-target interaction rules between organisms
+% % }
+% \begin{exampleblock}
+% 		<1->{Dataset standard format}
+% What are the specifications of a standard format, to represent all the available datasets?
+% \end{exampleblock}
+% \pause
+% \begin{exampleblock}
+% 		<1->{Features}
+% What are the high-level and raw-level features that best represent interactions?
+% \end{exampleblock}
+% \pause
+% \begin{exampleblock}
+% 		<1->{Top important features}
+% What are the key features of miRNA-target interactions for each organism?\end{exampleblock}
+% \pause
+% \begin{exampleblock}
+% 		<1->{Inter-organism prediction performance}
+% What is the performance of machine learning models in predicting organism interactions different from the one they have trained on?
+% \end{exampleblock}
+% \pause
+% \begin{exampleblock}
+% 		<1->{model transferability}
+% What are the different factors that best explain the observed results, and do they coincide with the evolutionary distance?
+% \end{exampleblock}
+
+
+% % \item What is the performance of machine learning models in predicting organism interactions different from the one they have trained on?
+% % \item What are the different factors that best explain the observed results, and do they coincide with the evolutionary distance?
+% % \end{enumerate}
+
+% % 	\end{itemize}
+% \end{frame}
+
+
+
+\section{Methods \& Results}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Processing pipeline}
 \begin{frame}{Processing pipeline}
 \begin{itemize}
 \item Transform and unify the datasets' different data formats.
 \begin{enumerate}
-\item Retrieve missing miRNA sequences (miRBase).
-\item Extract target sequences based on the genomic coordinates. 
-\item Blast \cite{altschul1990basic_blast} to match the target mRNA sequences against the 3'UTRs (Ensembl Biomart).
-\item Duplex generation using ViennaRNA suite (RNAduplex) \cite{lorenz2011viennarna}.
-\item Keeping canonical and non-canonical seed interactions only.
+\item Retrieve missing miRNA sequences (\textbf{miRBase}).
+\item Extract target sequences based on the \textbf{genomic coordinates}. 
+\item \textbf{BLAST}  to match the target mRNA sequences against the \textbf{3'UTRs} (Ensembl Biomart).
+\item \textbf{Duplex generation} using ViennaRNA suite (RNAduplex).
+\item Keeping \textbf{canonical and non-canonical} seed interactions only.
 \end{enumerate}
-\item Enable, with a relatively low effort, to add more data sources to the analysis.
+% \item Enable, with a relatively low effort, to add more data sources to the analysis.
 \end{itemize}
- \end{frame}
 
 
 
 \begin{table}[h!]
-\caption{Data processing pipeline}
+% \caption{Data processing pipeline}
 \label{tab:preprocess}
  \resizebox{\textwidth}{!}{%
 \begin{tabular}{|l|c|c|c|c|c|}
 \hline
-\textbf{Paper}       & \cite{helwak2013mapping} & \cite{grosswendt2014unambiguous} & \cite{scheel2017global} & 
-\cite{broughton2016pairing} & \cite{darnell_moore2015mirna} \\ \hline
+% \textbf{Paper}       & \cite{helwak2013mapping} & \cite{grosswendt2014unambiguous} & \cite{scheel2017global} & 
+% \cite{broughton2016pairing} & \cite{darnell_moore2015mirna} \\ \hline
 \textbf{Datasets}  & h1 & ce1, h2, m1 & ca1                & ce2      & h3, m2  \\ \hline
 \textbf{miRNA sequence}  & \checkmark  & \checkmark           &  mirbase & mirbase  & mirbase \\ \hline
 \textbf{Target sequence} & \checkmark  & \checkmark           & \checkmark                  & wormbase & UCSC genome browser  \\ \hline
@@ -463,6 +532,8 @@ mirTarget v4 \cite{liu2019prediction} & SVM                & \begin{tabular}[c]{
 \end{tabular}}
 
 \end{table}
+
+ \end{frame}
 
 
 
@@ -485,6 +556,13 @@ No. of interactions in 3'UTRs                                                   
 \
      \end{threeparttable}
 \end{table}
+
+
+\begin{exampleblock}
+		<1->{Notice}
+The pipeline enables, with a relatively low effort, to add future data sources to the analysis.
+\end{exampleblock}
+
 \end{frame}
 
 \subsection{Datasets' characteristics}
@@ -619,26 +697,45 @@ minimum free energy of the target site + 50nt flanking regions\tnote{n}         
 
 \subsection{Cross-dataset analysis}
 \begin{frame}{Method}
-Examined the relationships between datasets:
+Examine the relationships between datasets:
 \begin{itemize}
 \item Use a statistical measure to calculate the distance between the datasets. 
-\item Visualized the datasets based on the unified list of the 16 most important features.
+\item Visualize the datasets based on the unified list of the 16 most important features.
 \item Evaluate the performance of each dataset specific classifier to properly classify interactions in the other datasets.
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Kullback Leibler divergence}
-\begin{equation}
+\begin{equation*}
  D_{KL} \left (P ||Q \right ) = \sum_{x\in \chi }{P\left ( x \right )log\left ( \frac{P\left ( x \right )}{Q\left ( x \right )} \right )}\label{eq:1}
-\end{equation}
-\begin{itemize}
-\item Can be interpreted as the amount of information lost when the training set represents the testing set.
-\item  \textit{P(x)} and \textit{Q(x)} are the miRNA seed distribution functions. 
-\item \textit{Q(x)} is the approximation distribution (calculated from the training set) 
-\item \textit{P(x)} is the true distribution (calculated from the testing set). 
-\end{itemize}
+\end{equation*}
+
+   \begin{figure}[h!]
+    \centering
+      \includegraphics[width=0.8\textwidth]{images/kl_explain.png}
+      \end{figure}
 
 \end{frame}
+
+
+\begin{frame}{Kullback Leibler divergence}
+\begin{equation*}
+ D_{KL} \left (P ||Q \right ) = \sum_{x\in \chi }{P\left ( x \right )log\left ( \frac{P\left ( x \right )}{Q\left ( x \right )} \right )}\label{eq:1}
+\end{equation*}
+
+  
+\begin{itemize}
+\item Measure the amount of information lost when the training set represents the testing set.
+\item  \textit{P(x)} and \textit{Q(x)} are the \textbf{miRNA seed distribution functions}. 
+\item \textit{Q(x)} is the approximation distribution (training set) 
+\item \textit{P(x)} is the true distribution (testing set). 
+\item The KL divergence is asymmetric.
+\end{itemize}
+
+
+\end{frame}
+
+
 
 \begin{frame}{Kullback Leibler divergence}
 
@@ -668,78 +765,139 @@ Examined the relationships between datasets:
 
 \end{frame}
 
-\section{Discussion}
-\subsection{Methodology}
-\begin{frame}{Methodology}
+\section{Summary}
+\subsection{Conclusions}
+\begin{frame}{Methodology \& Results}
+
+\begin{exampleblock}
+		<1->{Methodology}
 \begin{itemize}
-\item Development of pipeline infrastructure enable us to analyze all available datasets.
-\item The importance of thorough analysis of the datasets
+\item Processing pipeline infrastructure
+\item Thorough analysis of the datasets
 \item Using tree-based classifier
 \item Training and testing dataset split: stratify and control sets
 \end{itemize}
+\end{exampleblock}
+\pause
+
+\begin{exampleblock}
+		<1->{Results}
+\begin{itemize}
+\item Cross-dataset accuarcy: 0.56 to 0.94. 
+\item KL divergence - differences in miRNA distributions (different organisms, cell types...)
+\item Area covered in 2D feature space - How the feature space is spanned by the datasets.
+\end{itemize}
+
+
+% \item Development of pipeline infrastructure enable us to analyze all available datasets.
+% \item The importance of thorough analysis of the datasets
+% \item Using tree-based classifier
+% \item Training and testing dataset split: stratify and control sets
+% \end{itemize}
+\end{exampleblock}
+
 \end{frame}
 
-\subsection{Results}
-% \begin{frame}{Evolutionary distance}
+
+
+
+% \subsection{Methodology}
+% \begin{frame}{Methodology}
+% \begin{itemize}
+% \item Development of pipeline infrastructure enable us to analyze all available datasets.
+% \item The importance of thorough analysis of the datasets
+% \item Using tree-based classifier
+% \item Training and testing dataset split: stratify and control sets
+% \end{itemize}
+% \end{frame}
+
+% \subsection{Results}
+% % \begin{frame}{Evolutionary distance}
+% % \begin{table}[h!]
+% % \caption{Estimated divergence time {[}MYA{]} between organisms in our study}
+% % \label{tab:evolutiontime}
+% % \begin{tabular}{|l|l|l|l|}
+% % \hline
+% %              & Mouse & Cattle & C.elegans \\ \hline
+% % Human & 90  & 96         & 797                    \\ \hline
+% % Mouse          &     & 96         & 797                    \\ \hline
+% % Cattle   &     &            & 797                    \\ \hline
+% % \end{tabular}
+% % \caption*{Each cell represents the time since the pair of organisms from the corresponding row and column diverged from their common ancestor (source: \cite{kumar2017timetree})}
+% % \end{table}
+% % \end{frame}
+
+
+% \begin{frame}{Classification performance between organisms}
+% \begin{itemize}
+% \item The accuracy results of cross-dataset classification ranged between 0.56 to 0.94. 
+% \item We examine several factors:
+% \begin{enumerate}
+% \item Evolutionary distance
 % \begin{table}[h!]
-% \caption{Estimated divergence time {[}MYA{]} between organisms in our study}
 % \label{tab:evolutiontime}
+%                      \resizebox{0.5\textwidth}{!}{%
 % \begin{tabular}{|l|l|l|l|}
 % \hline
 %              & Mouse & Cattle & C.elegans \\ \hline
 % Human & 90  & 96         & 797                    \\ \hline
 % Mouse          &     & 96         & 797                    \\ \hline
 % Cattle   &     &            & 797                    \\ \hline
-% \end{tabular}
-% \caption*{Each cell represents the time since the pair of organisms from the corresponding row and column diverged from their common ancestor (source: \cite{kumar2017timetree})}
+% \end{tabular}}
 % \end{table}
+% \item KL divergence - The divergence associates with the differences in miRNA distributions among different organisms, cell types or developmental stages.
+% \item Area covered in 2D feature space - How the datasets spans the feature space.
+% \end{enumerate}
+
+ 
+% \end{itemize}
 % \end{frame}
 
 
-\begin{frame}{Classification performance between organisms}
-\begin{itemize}
-\item The accuracy results of cross-dataset classification ranged between 0.56 to 0.94. 
-\item We examine several factors:
-\begin{enumerate}
-\item Evolutionary distance
-\begin{table}[h!]
-\label{tab:evolutiontime}
-                     \resizebox{0.5\textwidth}{!}{%
-\begin{tabular}{|l|l|l|l|}
-\hline
-             & Mouse & Cattle & C.elegans \\ \hline
-Human & 90  & 96         & 797                    \\ \hline
-Mouse          &     & 96         & 797                    \\ \hline
-Cattle   &     &            & 797                    \\ \hline
-\end{tabular}}
-\end{table}
-\item KL divergence - The divergence associates with the differences in miRNA distributions among different organisms, cell types or developmental stages.
-\item Area covered in 2D feature space - How the datasets spans the feature space.
-\end{enumerate}
 
- 
-\end{itemize}
-\end{frame}
-
-
-\subsection{Conclusions and future perspectives}
 \begin{frame}{Conclusions}
-\begin{itemize}
-\item The accuracy are pretty high, as long as the organisms are within a certain evolutionary distance.
-\item Ability of the machine learning model to generalize interaction rules into more universal interaction rules. 
-\item Target prediction models could be applied also to organisms where experimental training data is limited or unavailable.
-\end{itemize}
+\begin{exampleblock}
+		<1->{Inter-organism prediction}
+The accuracy is pretty high, as long as the organisms are within a certain evolutionary distance.
+\end{exampleblock}
+\pause
+\begin{exampleblock}
+		<1->{Universal interaction rules}
+Machine learning model can generalize the interaction rules and learn the universal  rules. 
+\end{exampleblock}
+\pause
+
+\begin{exampleblock}
+		<1->{Transferability}
+Target prediction models could be applied to organisms where experimental training data is limited or unavailable.
+\end{exampleblock}
+
 \end{frame}
 
+
+
+% \begin{frame}{Conclusions}
+% \begin{exampleblock}
+% 		<1->{Conclusions}
+% \begin{itemize}
+% \item The accuracy are pretty high, as long as the organisms are within a certain evolutionary distance.
+% \item Ability of the machine learning model to generalize interaction rules into more universal interaction rules. 
+% \item Target prediction models could be applied also to organisms where experimental training data is limited or unavailable.
+% \end{itemize}
+% \end{exampleblock}
+
+% \end{frame}
+\subsection{Future work}
 \begin{frame}{Future work}
 \begin{itemize}
 \item Add more miRNA-mRNA interaction datasets when become available.
 \item Database and web server with parsed data, feature extraction and negative data.
-\item Combine the information from several datasets in an iterative manner and examine the prediction accuracy in close and more distant organisms.
+\item Combine the information from several datasets and examine the prediction accuracy in close and more distant organisms.
 \end{itemize}
 \end{frame}
 
-
+\section{MirTarFeaturesDB}
+\subsection{Web server}
 \begin{frame}{MirTarFeaturesDB}
 
 
@@ -770,147 +928,4 @@ Cattle   &     &            & 797                    \\ \hline
 \end{frame}
 
 
-% \begin{frame}{Slide Title \#4}
-% 	\begin{example}
-% 		<1->First example. 
-% 	\end{example}
-% 	\begin{example}
-% 		<2->Second example.
-% 	\end{example}
-% \end{frame}
-
-
-
-% \begin{frame}{Slide Title \#1}
-% 	\framesubtitle{Slide subtitle \#1}
-% 	\begin{itemize}
-% 		\item Use the \texttt{itemize} environment frequently.
-% 		\pause
-% 		\item Use short sentences and phrases.
-% 		\pause
-% 		\item In this presentation we use the \textbackslash{}\texttt{pause} macro.
-% 	\end{itemize}
-% \end{frame}
-
-% \begin{frame}{Slide Title \#2}
-% 	\begin{itemize}
-% 		\item <1->You can define the order of appearance.
-% 		\item <3->Like here.
-% 		\item <2->This is the second item to appear.
-% 	\end{itemize}
-% \end{frame}
-
-% \begin{frame}{Slide Title \#3}
-% 	\begin{block}
-% 		<1->{}
-% 		\begin{itemize}
-% 			\item Group without title.
-% 			\item Appears for all slides.
-% 		\end{itemize}
-% 	\end{block}
-% 	\begin{exampleblock}
-% 		<2->{Group title}
-% 		\begin{itemize}
-% 			\item $e^{i\pi}=-1$.
-% 			\item $e^{i\pi/2}=i$.
-% 		\end{itemize}
-% 	\end{exampleblock}
-% \end{frame}
-
-% %%
-% \subsection{Previous work}
-
-% \begin{frame}{Slide Title \#4}
-% 	\begin{example}
-% 		<1->First example. 
-% 	\end{example}
-% 	\begin{example}
-% 		<2->Second example.
-% 	\end{example}
-% \end{frame}
-
-% \begin{frame}{Slide Title \#5}
-% 	\begin{center}
-% 		Table example \\[12pt]
-% 		\begin{tabular}{c||c|c|c|}
-% 			& \textbf{col 1} & \textbf{col  2} & \textbf{col 3} \\
-% 			\hline
-% 			\hline
-% 			\textbf{row 1} & 11 & 12 & 13 \\
-% 			\hline
-% 			\textbf{row 2} & 21 & 22 & 23 \\
-% 		\end{tabular}
-%     \end{center}
-% \end{frame}
-
-% \begin{frame}{Slide Title \#6}
-% 	\begin{center}
-% 		Figure example \\[12pt]
-% 		\includegraphics[width=0.35\textwidth,keepaspectratio]{LampFlowchart.png}
-% 		\\
-% 		\footnotesize(source: \textlatin{Wikipedia})
-%     \end{center}
-% \end{frame}
-
-% \begin{frame}{Slide Title \#7}
-% 	\centering
-% 	Math examples \\[12pt]
-% 	\begin{equation}
-%         	B'=-\nabla \times E
-% 	\end{equation}
-% 	\begin{equation*}
-%         	E'=\nabla \times B - 4\pi j
-% 	\end{equation*}
-% \end{frame}
-
-% %%%%
-% \section{Results / contribution}
-
-% %%
-% \subsection{Main results}
-
-% \begin{frame}{Summary}
-%   	\begin{alertblock}{Attention}
-%   		\textlatin{This is an important alert}
-%   	\end{alertblock}
-% \end{frame}
-
-% %
-% \subsection{Subsection title}
-
-% \begin{frame}{Summary}
-% 	\begin{itemize}
-% 		\item The \textcolor{red}{first main message} of our talk.
-% 		\item The \textcolor{red}{second main message} of our talk.
-% 		\item Maybe a \textcolor{red}{third message}, but ... no more.
-% 	\end{itemize}
-% 	\vskip0pt plus.5fill
-% 	\begin{itemize}
-% 		\item Conclusion.
-% 	\end{itemize}
-% 	\begin{itemize}
-% 		\item Future work.
-% 		\item Discussion.
-% 	\end{itemize}
-% \end{frame}
-
-% \begin{frame}{References}
-% 	\begin{thebibliography}{2}
-% \bibliographystyle{abbrv}  
-% \bibliography{thesis}
-% % 		\beamertemplatebookbibitems
-% % 		\bibitem{Author1990}A.\ Author. \newblock\emph{Handbook of Everything}.\newblock
-% % \textlatin{Some Press, \oldstylenums{1990}}.
-
-% % 		\beamertemplatearticlebibitems
-% % 		\bibitem{Someone2002}B.\ Author.\newblock On this and that\emph{.}
-% % \newblock\emph{Journal on This and That}. 
-% % \oldstylenums{2}(\oldstylenums{1}):\oldstylenums{50}--\oldstylenums{100}, 
-% % \oldstylenums{2000}.
-% 	\end{thebibliography}
-% \end{frame}
-\section{Bibliography}
-\bibliographystyle{abbrv}  
-\bibliography{thesis}
-%%
 \end{document}
