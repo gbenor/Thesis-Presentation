@@ -117,8 +117,10 @@
 		\begin{itemize}
 			\item A class of small non-coding RNAs (19-24 nts)\\
 			      \textbf{hsa-miR-1: UGGAAUGUAAAGAAGUAUGUAU
-			      	}\item Regulate gene expression by binding to partially complementary sites
+			      	}
+			      	\item Regulate gene expression by binding to partially complementary sites
 			      on target mRNAs (hybridization)
+			      \item Lead to translational inhibition and/or degradation of targeted mRNAs
 		\end{itemize}
 	\end{exampleblock}
 % 	\begin{itemize}
@@ -134,22 +136,23 @@
 
 
 \begin{frame}{MicroRNA}
-	\begin{itemize}
-% \item miRISC binding typically leads to translational inhibition and/or degradation of targeted mRNAs.
-\item Lead to translational inhibition and/or degradation of targeted mRNAs
-\item Conserved throughout evolution
-\item Present in the genomes of animals and plants  
-\item Have diverse functions in development and physiology
-\item Have been implicated in many human diseases
-\end{itemize}
 	\begin{exampleblock}
-		<1->{}
+		<1->{miRNAs as Biomarkers}
 		\begin{itemize}
 			\item Found in all mammalian cells
 			\item Unique to cell type
 			\item Unique to cell states
 		\end{itemize}
 	\end{exampleblock}
+	\begin{itemize}
+% \item miRISC binding typically leads to translational inhibition and/or degradation of targeted mRNAs.
+% \item Lead to translational inhibition and/or degradation of targeted mRNAs
+\item Conserved throughout evolution
+\item Present in the genomes of animals and plants  
+\item Have diverse functions in development and physiology
+\item Have been implicated in many human diseases
+\end{itemize}
+
 
 \end{frame}
 
@@ -158,22 +161,24 @@
 \begin{frame}{Identification of miRNA target sites}
 \begin{exampleblock}
 		<1->{}
-		The identification of miRNA target sites on mRNAs is a fundamental step in understanding miRNA involvement in cellular processes.
+	\begin{itemize}
+\item In most cases, miRNAs interact with the 3' UTR of target mRNAs. 
+\item miRNA target identification is a fundamental step in understanding miRNA involvement in cellular processes.
+\end{itemize}
 	\end{exampleblock}
 	\begin{itemize}
 	\item Laboratory experiments
-	\item Bionformatics methods
+	\item Bioinformatics methods
 \end{itemize}
 \begin{figure}[ht!]
 	  \centering
-    \includegraphics[width=0.5\textwidth]{images/micro_rna2910516058.jpg} 
+    \includegraphics[width=0.4\textwidth]{images/micro_rna2910516058.jpg} 
 \end{figure}
 \end{frame}
 
 
 
 \begin{frame}{Experimental methods}
-	\begin{column}{0.65\textwidth}
 		\begin{exampleblock}
 			<1->{Measuring changes in mRNA levels}
 			Measuring level changes in tissue-cultured cells.
@@ -181,21 +186,57 @@
 				\item Cons: indirect signals, exact sequences are unknown, may miss signals.
 			\end{itemize}
 		\end{exampleblock}
+		\begin{figure}[ht!]
+	  \centering
+    \includegraphics[width=0.7\textwidth]{images/mrna measure.jpg}
+\end{figure}
+	
+\end{frame}
+
+
+
+\begin{frame}{Experimental methods}
 		\begin{exampleblock}
-			<1->{Crosslinking and immunoprecipitation (CLIP)}
+				<1->{Crosslinking and immunoprecipitation (CLIP)}
 			CLIP of RNA-protein complexes that are found in direct contact.
 			\begin{itemize}
 				\item Cons: the identity of the specific miRNA has to be predicted bioinformatically.
 			\end{itemize}
 		\end{exampleblock}
-	\end{column}
-	\begin{column}{0.35\textwidth}
+	
 		\begin{figure}[hb!]
 			\centering
-			\includegraphics[width=0.8\textwidth]{images/Crosslinking-and-Immunoprecipitation-(CLIP)-2.jpg}
+			\includegraphics[width=0.4\textwidth]{images/clip-isana.png}
 		\end{figure}
-	\end{column}
+
 \end{frame}
+
+
+
+% \begin{frame}{Experimental methods}
+% 	\begin{column}{0.65\textwidth}
+% 		\begin{exampleblock}
+% 			<1->{Measuring changes in mRNA levels}
+% 			Measuring level changes in tissue-cultured cells.
+% 			\begin{itemize}
+% 				\item Cons: indirect signals, exact sequences are unknown, may miss signals.
+% 			\end{itemize}
+% 		\end{exampleblock}
+% 		\begin{exampleblock}
+% 			<1->{Crosslinking and immunoprecipitation (CLIP)}
+% 			CLIP of RNA-protein complexes that are found in direct contact.
+% 			\begin{itemize}
+% 				\item Cons: the identity of the specific miRNA has to be predicted bioinformatically.
+% 			\end{itemize}
+% 		\end{exampleblock}
+% 	\end{column}
+% 	\begin{column}{0.35\textwidth}
+% 		\begin{figure}[hb!]
+% 			\centering
+% 			\includegraphics[width=0.8\textwidth]{images/Crosslinking-and-Immunoprecipitation-(CLIP)-2.jpg}
+% 		\end{figure}
+% 	\end{column}
+% \end{frame}
 
 
 \begin{frame}{Experimental methods}
@@ -218,28 +259,6 @@ These methdos use an extra step to covalently ligate the 3' end of a miRNA and t
     \includegraphics[width=0.8\textwidth]{images/clash11.png}
 \end{figure}
 \end{frame}
-
-
-\begin{frame}{Principles of Bioinformatics methods}
-\begin{itemize}
-\item Base pairing pattern (e.g., seed)
-\item Free energy of the miRNA-mRNA duplex
-\item Evolutionarily conservation of the target gene
-\item Accessibility of the mRNA (mRNA secondary structure)
-\end{itemize}
-\begin{figure}[hb!]
-	  \centering
-% 	  \caption{Crosslinking and immunoprecipitation (CLIP)}
-    \includegraphics[width=0.4\textwidth]{images/mirna seed second.jpg}
-\end{figure}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Motivaton}
-
-\subsection{Previous work}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \begin{frame}{Avaliable datasets}
@@ -328,6 +347,31 @@ These methdos use an extra step to covalently ligate the 3' end of a miRNA and t
 \end{frame}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Motivaton}
+
+\subsection{Previous work}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\begin{frame}{Principles of Bioinformatics methods}
+\begin{itemize}
+\item Base pairing pattern (e.g., seed)
+\item Free energy of the miRNA-mRNA duplex
+\item Evolutionarily conservation of the target gene
+\item Accessibility of the mRNA (mRNA secondary structure)
+\end{itemize}
+\begin{figure}[hb!]
+	  \centering
+% 	  \caption{Crosslinking and immunoprecipitation (CLIP)}
+    \includegraphics[width=0.4\textwidth]{images/mirna seed second.jpg}
+\end{figure}
+\end{frame}
+
+
 
 \begin{frame}{Previous work}
 \begin{column}{0.65\textwidth}
@@ -381,13 +425,13 @@ The methods differ in several aspects:
 \begin{tabular}{|l|l|l|l|l|l|}
 \hline
 \textbf{Tool} & \textbf{ML method} & \textbf{Datasets used for training/testing}                                     & \textbf{Independent Dataset}                                                   & \textbf{Negative interactions} & \textbf{Features} \\ \hline
-chimiRic \cite{lu2016learning}      & SVM                & Human (CLASH, AGO-CLIP)                                                                                            & \begin{tabular}[c]{@{}l@{}} chimeras from \\ Mouse and \textit{C.elegans} \end{tabular}                                                              & \begin{tabular}[c]{@{}l@{}}seed matching \\ non-CLIP sites \end{tabular}                   & Small             \\ \hline
-TarPmiR \cite{ding2016tarpmir}       & Random Forest      & Human (CLASH)                                                                                                         & \begin{tabular}[c]{@{}l@{}}Human (PAR-CLIP), \\ Mouse (HITS-CLIP)\end{tabular}   & \begin{tabular}[c]{@{}l@{}}Negative target sites, \\ on positive mRNAs\end{tabular}                     & 13                \\ \hline
-DeepMirTar \cite{wen2018deepmirtar}   & Deep learning      & Human (CLASH) + mirRecords                                                                                            & Human (PAR-CLIP)                                                                & Mock miRNAs                          & 750               \\ \hline
-miRAW \cite{pla2018miraw}        & Deep learning      & \begin{tabular}[c]{@{}l@{}}Human (intersection of: CLASH, CLIP, \\ TargetScan with Diana TarBase, mirTarBase)\end{tabular} & Human (microarray)                                                              & Experimental data                  & Raw sequence       \\ \hline
-mirLSTM \cite{paker2019mirlstm}      & Deep learning      & Human (CLASH) + mirRecords                                                                                            & Experimental                                                                   & Mock miRNAs                          & Raw sequence       \\ \hline
-mirTarget \cite{wang2016improving}    & SVM                & Human (CLASH, AGO-CLIP)                                                                                               & Human(microarrays)                                                              & \begin{tabular}[c]{@{}l@{}}seed matching non-CLIP sites \\ on expressed mRNAs \end{tabular}                           & 50                \\ \hline
-mirTarget v4 \cite{liu2019prediction} & SVM                & \begin{tabular}[c]{@{}l@{}}Human (Intersection of \\ CLASH and microarrays) \end{tabular}                                                                                             & \begin{tabular}[c]{@{}l@{}}Mouse (HITS-CLIP), \\ Human (microarrays)\end{tabular} & \begin{tabular}[c]{@{}l@{}}seed matching non-CLIP sites \\ on expressed mRNAs \end{tabular}                          & 96                \\ \hline
+chimiRic      & SVM                & Human (CLASH, AGO-CLIP)                                                                                            & \begin{tabular}[c]{@{}l@{}} chimeras from \\ Mouse and \textit{C.elegans} \end{tabular}                                                              & \begin{tabular}[c]{@{}l@{}}seed matching \\ non-CLIP sites \end{tabular}                   & Small             \\ \hline
+TarPmiR        & Random Forest      & Human (CLASH)                                                                                                         & \begin{tabular}[c]{@{}l@{}}Human (PAR-CLIP), \\ Mouse (HITS-CLIP)\end{tabular}   & \begin{tabular}[c]{@{}l@{}}Negative target sites, \\ on positive mRNAs\end{tabular}                     & 13                \\ \hline
+DeepMirTar   & Deep learning      & Human (CLASH) + mirRecords                                                                                            & Human (PAR-CLIP)                                                                & Mock miRNAs                          & 750               \\ \hline
+miRAW       & Deep learning      & \begin{tabular}[c]{@{}l@{}}Human (intersection of: CLASH, CLIP, \\ TargetScan with Diana TarBase, mirTarBase)\end{tabular} & Human (microarray)                                                              & Experimental data                  & Raw sequence       \\ \hline
+mirLSTM      & Deep learning      & Human (CLASH) + mirRecords                                                                                            & Experimental                                                                   & Mock miRNAs                          & Raw sequence       \\ \hline
+mirTarget    & SVM                & Human (CLASH, AGO-CLIP)                                                                                               & Human(microarrays)                                                              & \begin{tabular}[c]{@{}l@{}}seed matching non-CLIP sites \\ on expressed mRNAs \end{tabular}                           & 50                \\ \hline
+mirTarget v4 & SVM                & \begin{tabular}[c]{@{}l@{}}Human (Intersection of \\ CLASH and microarrays) \end{tabular}                                                                                             & \begin{tabular}[c]{@{}l@{}}Mouse (HITS-CLIP), \\ Human (microarrays)\end{tabular} & \begin{tabular}[c]{@{}l@{}}seed matching non-CLIP sites \\ on expressed mRNAs \end{tabular}                          & 96                \\ \hline
 \end{tabular}}
 \end{table}
 \end{frame}
@@ -412,31 +456,33 @@ seed match, sequence composition, free energy, site accessibility, conservation,
 \end{column}
 \end{frame}
 
-\begin{frame}{Accuracy performance}
-\begin{table}[h!]
-\caption{taken from deepMirTar \cite{wen2018deepmirtar}.}
-\label{tab:existingmethods}
-\centering
-   \resizebox{\textwidth}{!}{%
+% \begin{frame}{Accuracy performance}
+% \begin{table}[h!]
+% \caption{taken from deepMirTar \cite{wen2018deepmirtar}.}
+% \label{tab:existingmethods}
+% \centering
+%   \resizebox{\textwidth}{!}{%
 
-\begin{tabular}{lll|l|l|}
-\cline{1-2} \cline{4-5}
-\multicolumn{1}{|l|}{\textbf{Methods}} & \multicolumn{1}{l|}{\textbf{ACC}} & \textbf{} & \textbf{Machine learning alg.} & \textbf{ACC}    \\ \cline{1-2} \cline{4-5} 
-\multicolumn{1}{|l|}{Miranda}          & \multicolumn{1}{l|}{0.6592}       &           & DT (Decision Tree)                            & 0.8139 (0.0137) \\ \cline{1-2} \cline{4-5} 
-\multicolumn{1}{|l|}{RNAhybrid}        & \multicolumn{1}{l|}{0.6988}       &           & BNB (Bernoulli Naïve Bayes)                            & 0.7570 (0.0098) \\ \cline{1-2} \cline{4-5} 
-\multicolumn{1}{|l|}{PITA}             & \multicolumn{1}{l|}{0.4981}       &           & LR (Logistic Regression)                            & 0.8491 (0.0117) \\ \cline{1-2} \cline{4-5} 
-\multicolumn{1}{|l|}{TargetScan v7.0a} & \multicolumn{1}{l|}{0.5801}       &           & RF (Random Forest)                             & 0.8811 (0.0090) \\ \cline{1-2} \cline{4-5} 
-\multicolumn{1}{|l|}{TarPmiR}          & \multicolumn{1}{l|}{0.7446}       &           & MLP (Multi-Layer Perceptron)                            & 0.8990 (0.0099) \\ \cline{1-2} \cline{4-5} 
-\multicolumn{1}{|l|}{\textbf{DeepMirTar (SdA)}} & \multicolumn{1}{l|}{0.9348}       &           & CNN-1D (Convolutional Neural Network)                         & 0.8886 (0.0145) \\ \cline{1-2} \cline{4-5} 
-                                       &                                   &           & CNN-2D (Convolutional Neural Network)                         & 0.8765 (0.0169) \\ \cline{4-5} 
-\end{tabular}}
-\end{table}
-\end{frame}
+% \begin{tabular}{lll|l|l|}
+% \cline{1-2} \cline{4-5}
+% \multicolumn{1}{|l|}{\textbf{Methods}} & \multicolumn{1}{l|}{\textbf{ACC}} & \textbf{} & \textbf{Machine learning alg.} & \textbf{ACC}    \\ \cline{1-2} \cline{4-5} 
+% \multicolumn{1}{|l|}{Miranda}          & \multicolumn{1}{l|}{0.6592}       &           & DT (Decision Tree)                            & 0.8139 (0.0137) \\ \cline{1-2} \cline{4-5} 
+% \multicolumn{1}{|l|}{RNAhybrid}        & \multicolumn{1}{l|}{0.6988}       &           & BNB (Bernoulli Naïve Bayes)                            & 0.7570 (0.0098) \\ \cline{1-2} \cline{4-5} 
+% \multicolumn{1}{|l|}{PITA}             & \multicolumn{1}{l|}{0.4981}       &           & LR (Logistic Regression)                            & 0.8491 (0.0117) \\ \cline{1-2} \cline{4-5} 
+% \multicolumn{1}{|l|}{TargetScan v7.0a} & \multicolumn{1}{l|}{0.5801}       &           & RF (Random Forest)                             & 0.8811 (0.0090) \\ \cline{1-2} \cline{4-5} 
+% \multicolumn{1}{|l|}{TarPmiR}          & \multicolumn{1}{l|}{0.7446}       &           & MLP (Multi-Layer Perceptron)                            & 0.8990 (0.0099) \\ \cline{1-2} \cline{4-5} 
+% \multicolumn{1}{|l|}{\textbf{DeepMirTar (SdA)}} & \multicolumn{1}{l|}{0.9348}       &           & CNN-1D (Convolutional Neural Network)                         & 0.8886 (0.0145) \\ \cline{1-2} \cline{4-5} 
+%                                       &                                   &           & CNN-2D (Convolutional Neural Network)                         & 0.8765 (0.0169) \\ \cline{4-5} 
+% \end{tabular}}
+% \end{table}
+% \end{frame}
 
 
 
 \subsection{Research Questions}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 
 \begin{frame}{Research Questions}
 	\begin{itemize}
